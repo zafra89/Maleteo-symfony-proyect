@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Maleteo | Login</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Catamaran:400,500&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="assets/styles/styles.css">
+	</head>
+	<body>
+		<form action="" method="GET">
+			<p class="the-form__title heading3">Log In</p>
+			<div class="the-form__group">
+				<label for="username">Username</label>
+				<input type="text" id="login-username" class="the-form__input" placeholder="Username..." name="username">
+			</div>
+			<div class="the-form__group">
+				<label for="pass">
+					Email
+				</label>
+				<input type="password" id="login-pass" class="the-form__input" placeholder="Password..." name="pass">
+			</div>
+			<input type="submit" class="the-form__btn btn btn-lg btn-primary" value="Enviar" onclick="{{ path('newDemo') }}">
+		</form>
+	</body>
+</html>
