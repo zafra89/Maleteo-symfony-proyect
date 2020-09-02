@@ -6,24 +6,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response; //Para usar los Response
 use Symfony\Component\Routing\Annotation\Route; //Para usar las annotation @Route
 use App\Entity\Demo;
+use App\Entity\Opiniones;
 use Doctrine\ORM\EntityManagerInterface; // Para usar los repositorios de las BBDD
-//use App\Entity\nombre_entidad; ---------> Para usar entidades
 use Symfony\Component\HttpFoundation\Request;
 
 class maleteoController extends AbstractController {
 
   /**
-   * @Route("");
+   * @Route("/maleteo", name="maleteo-home");
    */
-  public function login() {
-    return $this->render("login.html.twig");
-  }
-
-  /**
-   * @Route("/home");
-   */
-  public function home() {
-    return $this->render("maleteo.html.twig", ['year' => date("Y")]);
+  public function home(Opiniones $opiniones) {
+    return $this->render("maleteo.html.twig", ['opiniones' => $opiniones]);
   }
   /**
    * @Route("/demo", name="newDemo");
@@ -37,10 +30,34 @@ class maleteoController extends AbstractController {
     $doctrine->persist($demo);
     $doctrine->flush();
 
-    return new Response("Has solicitado una demo");
+    return $this->render("maleteo.html.twig");
   }
 
-  public function opinionsManage() {
+  public function showDemos() {
 
+  }
+  /**
+   * @Route("/opinion", name="newOpinion");
+   */
+  public function insertOpinion(EntityManagerInterface $doctrine) {
+    $opinion1 = new Opiniones();
+    $opinion1->setComentario("Muy contento con el servicio. Repetiré.");
+    $opinion1->setAutor("Alicia");
+    $opinion1->setCiudad("Lugo");
+    $doctrine->persist($opinion1);
+
+    $opinion2 = new Opiniones();
+    $opinion2->setComentario("Deja mucho que desear la forma en la que gestionan todo.");
+    $opinion2->setAutor("Mario");
+    $opinion2->setCiudad("Valencia");
+    $doctrine->persist($opinion2);
+
+    $opinion3 = new Opiniones();
+    $opinion3->setComentario("Muy recomendable para ganar un extra.");
+    $opinion3->setAutor("Marina");
+    $opinion3->setCiudad("Huelva");
+    $doctrine->persist($opinion3);
+
+    $doctrine->flush();
   }
 }
