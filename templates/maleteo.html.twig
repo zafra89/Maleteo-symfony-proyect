@@ -1,220 +1,264 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
-	<main>
-		<div class="jumbo">
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>
+			{% block title %}Maleteo
+			{% endblock %}
+		</title>
+		{% block stylesheets %}<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+			<link href="https://fonts.googleapis.com/css?family=Catamaran:400,500&display=swap" rel="stylesheet">
+			<link rel="stylesheet" href="assets/styles/styles.css">
+		{% endblock %}
+	</head>
+	{% block header %}
+		<body>
 			<div class="wrapper">
 				<div class="container-fluid">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="jumbo__ww-title">
-								<div class="jumbo__w-title">
-									<h1 class="jumbo__title heading1">
-										Gana dinero guardando equipaje a viajeros como tú
-									</h1>
-									<ul class="jumbo__app-btns">
-										<li>
-											<a href="#">
-												<img src="assets/img/app-store.svg" alt="" class="jumbo__app-btn">
-											</a>
-										</li>
-										<li>
-											<a href="">
-												<img src="assets/img/google-play.svg" alt="" class="jumbo__app-btn">
-											</a>
-										</li>
-									</ul>
+					<header class="header">
+						<img src="assets/img/logo.svg" alt="Maleteo">
+					</header>
+				</div>
+			</div>
+		{% endblock %}
+		{% block body %}
+			<main>
+				<div class="jumbo">
+					<div class="wrapper">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="jumbo__ww-title">
+										<div class="jumbo__w-title">
+											<h1 class="jumbo__title heading1">
+												Gana dinero guardando equipaje a viajeros como tú
+											</h1>
+											<ul class="jumbo__app-btns">
+												<li>
+													<a href="#">
+														<img src="assets/img/app-store.svg" alt="" class="jumbo__app-btn">
+													</a>
+												</li>
+												<li>
+													<a href="">
+														<img src="assets/img/google-play.svg" alt="" class="jumbo__app-btn">
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class="wrapper">
-			<div class="container-fluid">
-				<section class="howworks">
-					<h2 class="howworks__title heading2">
-						¿Cómo funciona?
-					</h2>
-					<ol class="howworks__steps row">
-						<li class="col-md-4">
-							<div class="howworks__step">
-								<div class="howworks__step-w-bola">
-									<div class="howworks__step-bola">
-										<span class="heading3">1</span>
+				<div class="wrapper">
+					<div class="container-fluid">
+						<section class="howworks">
+							<h2 class="howworks__title heading2">
+								¿Cómo funciona?
+							</h2>
+							<ol class="howworks__steps row">
+								<li class="col-md-4">
+									<div class="howworks__step">
+										<div class="howworks__step-w-bola">
+											<div class="howworks__step-bola">
+												<span class="heading3">1</span>
+											</div>
+										</div>
+										<div class="howworks__step-w-txt">
+											<p class="howworks__step-title heading3">
+												Regístrate:
+											</p>
+											<p class="howworks__step-txt">
+												Para obtener todas las ventajas puedes registrarte
+												<a href="#">aquí</a>.
+											</p>
+										</div>
+									</div>
+								</li>
+								<li class="col-md-4">
+									<div class="howworks__step">
+										<div class="howworks__step-w-bola">
+											<div class="howworks__step-bola">
+												<span class="heading3">2</span>
+											</div>
+										</div>
+										<div class="howworks__step-w-txt">
+											<p class="howworks__step-title heading3">
+												Solicita/consulta las demos:
+											</p>
+											<p class="howworks__step-txt">
+												Puedes solicitar una demo en nuestro formulario o ver las solicitudes
+												<a href="{{ path('showDemos') }}">aquí</a>.
+											</p>
+										</div>
+									</div>
+								</li>
+								<li class="col-md-4">
+									<div class="howworks__step">
+										<div class="howworks__step-w-bola">
+											<div class="howworks__step-bola">
+												<span class="heading3">3</span>
+											</div>
+										</div>
+										<div class="howworks__step-w-txt">
+											<p class="howworks__step-title heading3">
+												Disfruta:
+											</p>
+											<p class="howworks__step-txt">
+												Empieza a disfrutar de todas las ventajas que ofrece maleteo.
+											</p>
+										</div>
+									</div>
+								</li>
+							</ol>
+						</section>
+
+						<section class="app-form">
+							<div class="row">
+								<div class="col-md-5">
+									<div class="app-form__w-app-img">
+										<img src="assets/img/iPhoneX.png" srcset="assets/img/iPhoneX@2x.png 2x, assets/img/iPhoneX.png 1x" alt="" class="app-form__app-img">
 									</div>
 								</div>
-								<div class="howworks__step-w-txt">
-									<p class="howworks__step-title heading3">
-										Date de alta
-									</p>
-									<p class="howworks__step-txt">
-										Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados.
-									</p>
+								<div class="col-md-5 col-md-offset-1">
+									<div class="the-form">
+										<form
+											action="{{ path('newDemo') }}" method="POST">
+											<!-- Aquí conectamos con la Demo introduciendo su path-->
+											<p class="the-form__title heading3">
+												Solicita una demo
+											</p>
+
+											<div class="the-form__group">
+												<label for="nombre">
+													Nombre
+												</label>
+												<input type="text" id="inputName" class="the-form__input" placeholder="por ej. Vincent Chase" name="nombre">
+											</div>
+
+											<div class="the-form__group">
+												<label for="email">
+													Email
+												</label>
+												<input type="email" id="inputEmail" class="the-form__input" placeholder="por ej. vincent@mga.com" name="email">
+											</div>
+
+											<div class="the-form__group">
+												<label for="ciudad">
+													Ciudad
+												</label>
+												<select id="inputCity" class="the-form__input the-form__select" name="ciudad">
+													<option value=''>Selecciona una Ciudad</option>
+													<option value=''>----------------</option>
+													<option value='Alava'>Álava</option>
+													<option value='Albacete'>Albacete</option>
+													<option value='Alicante'>Alicante</option>
+													<option value='Almeria'>Almería</option>
+													<option value='Asturias'>Asturias</option>
+													<option value='Avila'>Ávila</option>
+													<option value='Badajoz'>Badajoz</option>
+													<option value='Barcelona'>Barcelona</option>
+													<option value='Burgos'>Burgos</option>
+													<option value='Caceres'>Cáceres</option>
+													<option value='Cadiz'>Cádiz</option>
+													<option value='Cantabria'>Cantabria</option>
+													<option value='Castellon'>Castellón</option>
+													<option value='Ceuta'>Ceuta</option>
+													<option value='Ciudad Real'>Ciudad Real</option>
+													<option value='Cordoba'>Córdoba</option>
+													<option value='Cuenca'>Cuenca</option>
+													<option value='Girona'>Girona</option>
+													<option value='Las Palmas'>Las Palmas</option>
+													<option value='Granada'>Granada</option>
+													<option value='Guadalajara'>Guadalajara</option>
+													<option value='Guipuzcoa'>Guipúzcoa</option>
+													<option value='Huelva'>Huelva</option>
+													<option value='Huesca'>Huesca</option>
+													<option value='Illes Balears'>Illes Balears</option>
+													<option value='Jaen'>Jaén</option>
+													<option value='A Coruña'>A Coruña</option>
+													<option value='La Rioja'>La Rioja</option>
+													<option value='Leon'>León</option>
+													<option value='Lleida'>Lleida</option>
+													<option value='Lugo'>Lugo</option>
+													<option value='Madrid'>Madrid</option>
+													<option value='Malaga'>Málaga</option>
+													<option value='Melilla'>Melilla</option>
+													<option value='Murcia'>Murcia</option>
+													<option value='Navarra'>Navarra</option>
+													<option value='Ourense'>Ourense</option>
+													<option value='Palencia'>Palencia</option>
+													<option value='Pontevedra'>Pontevedra</option>
+													<option value='Salamanca'>Salamanca</option>
+													<option value='Segovia'>Segovia</option>
+													<option value='Sevilla'>Sevilla</option>
+													<option value='Soria'>Soria</option>
+													<option value='Tarragona'>Tarragona</option>
+													<option value='Tenerife'>Santa Cruz de Tenerife</option>
+													<option value='Teruel'>Teruel</option>
+													<option value='Toledo'>Toledo</option>
+													<option value='Valencia'>Valencia</option>
+													<option value='Valladolid'>Valladolid</option>
+													<option value='Vizcaya'>Vizcaya</option>
+													<option value='Zamora'>Zamora</option>
+													<option value='Zaragoza'>Zaragoza</option>
+												</select>
+											</div>
+											<div class="the-form__group the-form__group_checkbox">
+												<input type="checkbox" id="privacity">
+												<label for="privacity">
+													Aceptas la
+													<a href="#">política de privacidad</a>
+												</label>
+											</div>
+											<input type="submit" class="the-form__btn btn btn-lg btn-primary" value="Enviar" onclick="{{ path('newDemo') }}">
+										</form>
+									</div>
 								</div>
 							</div>
-						</li>
-						<li class="col-md-4">
-							<div class="howworks__step">
-								<div class="howworks__step-w-bola">
-									<div class="howworks__step-bola">
-										<span class="heading3">1</span>
-									</div>
-								</div>
-								<div class="howworks__step-w-txt">
-									<p class="howworks__step-title heading3">
-										Date de alta
-									</p>
-									<p class="howworks__step-txt">
-										Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados.
-									</p>
-								</div>
-							</div>
-						</li>
-						<li class="col-md-4">
-							<div class="howworks__step">
-								<div class="howworks__step-w-bola">
-									<div class="howworks__step-bola">
-										<span class="heading3">1</span>
-									</div>
-								</div>
-								<div class="howworks__step-w-txt">
-									<p class="howworks__step-title heading3">
-										Date de alta
-									</p>
-									<p class="howworks__step-txt">
-										Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados.
-									</p>
-								</div>
-							</div>
-						</li>
-					</ol>
-				</section>
+						</section>
 
-				<section class="app-form">
-					<div class="row">
-						<div class="col-md-5">
-							<div class="app-form__w-app-img">
-								<img src="assets/img/iPhoneX.png" srcset="assets/img/iPhoneX@2x.png 2x, assets/img/iPhoneX.png 1x" alt="" class="app-form__app-img">
-							</div>
-						</div>
-						<div class="col-md-5 col-md-offset-1">
-							<div class="the-form">
-
-								<form
-									action="{{ path('newDemo') }}" method="POST">
-									<!-- Aquí conectamos con la Demo introduciendo su path-->
-									<p class="the-form__title heading3">
-										Solicita una demo
-									</p>
-
-									<div class="the-form__group">
-										<label for="nombre">
-											Nombre
-										</label>
-										<input type="text" id="inputName" class="the-form__input" placeholder="por ej. Vincent Chase" name="nombre">
-									</div>
-
-									<div class="the-form__group">
-										<label for="email">
-											Email
-										</label>
-										<input type="email" id="inputEmail" class="the-form__input" placeholder="por ej. vincent@mga.com" name="email">
-									</div>
-
-									<div class="the-form__group">
-										<label for="ciudad">
-											Ciudad
-										</label>
-										<select id="inputCity" class="the-form__input the-form__select" name="ciudad">
-											<option value=''>Selecciona una Ciudad</option>
-											<option value=''>----------------</option>
-											<option value='Alava'>Álava</option>
-											<option value='Albacete'>Albacete</option>
-											<option value='Alicante'>Alicante</option>
-											<option value='Almeria'>Almería</option>
-											<option value='Asturias'>Asturias</option>
-											<option value='Avila'>Ávila</option>
-											<option value='Badajoz'>Badajoz</option>
-											<option value='Barcelona'>Barcelona</option>
-											<option value='Burgos'>Burgos</option>
-											<option value='Caceres'>Cáceres</option>
-											<option value='Cadiz'>Cádiz</option>
-											<option value='Cantabria'>Cantabria</option>
-											<option value='Castellon'>Castellón</option>
-											<option value='Ceuta'>Ceuta</option>
-											<option value='Ciudad Real'>Ciudad Real</option>
-											<option value='Cordoba'>Córdoba</option>
-											<option value='Cuenca'>Cuenca</option>
-											<option value='Girona'>Girona</option>
-											<option value='Las Palmas'>Las Palmas</option>
-											<option value='Granada'>Granada</option>
-											<option value='Guadalajara'>Guadalajara</option>
-											<option value='Guipuzcoa'>Guipúzcoa</option>
-											<option value='Huelva'>Huelva</option>
-											<option value='Huesca'>Huesca</option>
-											<option value='Illes Balears'>Illes Balears</option>
-											<option value='Jaen'>Jaén</option>
-											<option value='A Coruña'>A Coruña</option>
-											<option value='La Rioja'>La Rioja</option>
-											<option value='Leon'>León</option>
-											<option value='Lleida'>Lleida</option>
-											<option value='Lugo'>Lugo</option>
-											<option value='Madrid'>Madrid</option>
-											<option value='Malaga'>Málaga</option>
-											<option value='Melilla'>Melilla</option>
-											<option value='Murcia'>Murcia</option>
-											<option value='Navarra'>Navarra</option>
-											<option value='Ourense'>Ourense</option>
-											<option value='Palencia'>Palencia</option>
-											<option value='Pontevedra'>Pontevedra</option>
-											<option value='Salamanca'>Salamanca</option>
-											<option value='Segovia'>Segovia</option>
-											<option value='Sevilla'>Sevilla</option>
-											<option value='Soria'>Soria</option>
-											<option value='Tarragona'>Tarragona</option>
-											<option value='Tenerife'>Santa Cruz de Tenerife</option>
-											<option value='Teruel'>Teruel</option>
-											<option value='Toledo'>Toledo</option>
-											<option value='Valencia'>Valencia</option>
-											<option value='Valladolid'>Valladolid</option>
-											<option value='Vizcaya'>Vizcaya</option>
-											<option value='Zamora'>Zamora</option>
-											<option value='Zaragoza'>Zaragoza</option>
-										</select>
-									</div>
-									<div class="the-form__group the-form__group_checkbox">
-										<input type="checkbox" id="privacity">
-										<label for="privacity">
-											Aceptas la
-											<a href="#">política de privacidad</a>
-										</label>
-									</div>
-									<input type="submit" class="the-form__btn btn btn-lg btn-primary" value="Enviar" onclick="{{ path('newDemo') }}">
-								</form>
-							</div>
-						</div>
+						<section class="opinions">
+							<h2 class="opinions__title heading2">
+								Opiniones de otros guardianes
+							</h2>
+							<p>Escriba su opinión
+								<a href="{{ path('showOpiniones') }}">aquí</a>
+							</p>
+							<ul class="row">
+								{% for opin in opiniones %}
+									{% if opin.id < 4 %}
+										<li class="col-md-4">
+											<div class="opinion">
+												<blockquote class="opinion__blq simple-bubble text-large">{{ opin.comentario }}</blockquote>
+												<p class="opinion__author text-large">{{ opin.autor }}</p>
+												<p class="opinion__author-address">{{ opin.ciudad }}</p>
+											</div>
+										</li>
+									{% endif %}
+								{% endfor %}
+							</ul>
+						</section>
 					</div>
-				</section>
-
-				<section class="opinions">
-					<h2 class="opinions__title heading2">
-						Opiniones de otros guardianes
-					</h2>
-					<ul class="row">
-						{% for opin in opiniones %}
-							<li class="col-md-4">
-								<div class="opinion">
-									<blockquote class="opinion__blq simple-bubble text-large">{{ opin.comentario }}</blockquote>
-									<p class="opinion__author text-large">{{ opin.autor }}</p>
-									<p class="opinion__author-address">{{ opin.ciudad }}</p>
-								</div>
-							</li>
-						{% endfor %}
-					</ul>
-				</section>
-			</div>
-		</div>
-	</main>
-{% endblock %}
+				</div>
+			</main>
+		{% endblock %}
+		{% block javascripts %}{% endblock %}
+		{% block footer %}
+			<footer class="footer">
+				<div class="wrapper">
+					<div class="container-fluid">
+						<img src="assets/img/logo.svg" alt="Maleteo" class="footer__logo">
+						<p class="footer__claim">
+							Hecho con ❤️ en Málaga.
+						</p>
+					</div>
+				</div>
+			</footer>
+		{% endblock %}
+	</body>
+</html>

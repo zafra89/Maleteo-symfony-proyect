@@ -20,6 +20,40 @@ class maleteoController extends AbstractController {
     $opiniones = $repo->findAll();
     return $this->render("maleteo.html.twig", ['opiniones' => $opiniones]);
   }
+
+  /**
+   * @Route("/maleteo/solicitudes", name="showDemos");
+   */
+  public function showDemos(EntityManagerInterface $doctrine) {
+    $repo = $doctrine->getRepository(Demo::class);
+    $demos = $repo->findAll();
+    return $this->render("demos.html.twig", ['demos' => $demos]);
+  }
+
+/**
+   * @Route("/maleteo/opiniones", name="showOpiniones");
+   */
+  public function sendOpiniones(EntityManagerInterface $doctrine) {
+    $repo = $doctrine->getRepository(Opiniones::class);
+    $opiniones = $repo->findAll();
+    return $this->render("opinions.html.twig", ['opiniones' => $opiniones]);
+  }
+
+  /**
+   * @Route("/opiniones", name="makeOpiniones");
+   */
+  public function showOpiniones(Request $request, EntityManagerInterface $doctrine) {
+    $opinion = new Opiniones();
+    $opinion->setComentario($request->get("comentario"));
+    $opinion->setAutor($request->get("autor"));
+    $opinion->setCiudad($request->get("ciudad"));
+
+    $doctrine->persist($opinion);
+    $doctrine->flush();
+
+    return $this->redirectToRoute('showOpiniones');
+  }
+
   /**
    * @Route("/demo", name="newDemo");
    */
@@ -36,6 +70,9 @@ class maleteoController extends AbstractController {
     $opiniones = $repo->findAll();
     return $this->render("maleteo.html.twig", ['opiniones' => $opiniones]);
   }
+
+
+
 
   /**
    * @Route("/opinion", name="newOpinion");
@@ -60,14 +97,5 @@ class maleteoController extends AbstractController {
     $doctrine->persist($opinion3);
 
     $doctrine->flush();
-  }
-
-  /**
-   * @Route("/maleteo/solicitudes", name="showDemos");
-   */
-  public function showDemos(EntityManagerInterface $doctrine) {
-    $repo = $doctrine->getRepository(Demo::class);
-    $demos = $repo->findAll();
-    return $this->render("demos.html.twig", ['demos' => $demos]);
   }
 }
