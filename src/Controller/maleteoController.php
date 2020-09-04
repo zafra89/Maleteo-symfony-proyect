@@ -3,11 +3,11 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response; //Para usar los Response
-use Symfony\Component\Routing\Annotation\Route; //Para usar las annotation @Route
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Demo;
 use App\Entity\Opiniones;
-use Doctrine\ORM\EntityManagerInterface; // Para usar los repositorios de las BBDD
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 class maleteoController extends AbstractController {
@@ -30,7 +30,7 @@ class maleteoController extends AbstractController {
     return $this->render("demos.html.twig", ['demos' => $demos]);
   }
 
-/**
+  /**
    * @Route("/maleteo/opiniones", name="showOpiniones");
    */
   public function sendOpiniones(EntityManagerInterface $doctrine) {
@@ -72,7 +72,12 @@ class maleteoController extends AbstractController {
   }
 
 
-
+  /**
+   * @Route("/maleteo/register", name="register");
+   */
+  public function register() {
+    return $this->render('register.html.twig');
+  }
 
   /**
    * @Route("/opinion", name="newOpinion");

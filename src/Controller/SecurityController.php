@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\HttpFoundation\Request;
 
 class SecurityController extends AbstractController
 {
@@ -37,12 +38,12 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/user/new")
+     * @Route("/register", name="app_register")
      */
-    public function newUser(EntityManagerInterface $doctrine, UserPasswordEncoderInterface $passwordEncoder) {
+    public function newUser(Request $request, EntityManagerInterface $doctrine, UserPasswordEncoderInterface $passwordEncoder) {
         $user = new User();
-        $user->setUsername('zafra89');
-        $user->setPassword($passwordEncoder->encodePassword($user, '1234'));
+        $user->setUsername($request->get("username"));
+        $user->setPassword($passwordEncoder->encodePassword($user, $request->get("password")));
 
         $doctrine->persist($user);
         $doctrine->flush();
