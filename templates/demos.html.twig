@@ -1,13 +1,21 @@
 {% extends 'maleteo.html.twig' %}
 
+{% block stylesheets %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Catamaran:400,500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{{asset('assets/styles/styles.css') }}">
+	<script src="https://kit.fontawesome.com/d5a5c93a6c.js" crossorigin="anonymous"></script>
+{% endblock %}
+
 {% block body %}
+	<a href="{{ path('maleteo-home') }}">Página principal ></a>
 	<ul class="row">
 		{% for dem in demos %}
 			<li class="col-md-4">
-				<div class="opinions">
-					<h3 class="opinions__blq simple-bubble text-large">{{ dem.nombre }}</h3>
-					<p class="opinions__author text-large">{{ dem.email }}</p>
-					<p class="opinions__author-address">{{ dem.ciudad }}</p>
+				<div class="opinion">
+					<h3 class="opinion__blq simple-bubble text-large">{{ dem.nombre }}</h3>
+					<p class="opinion__author text-large">{{ dem.email }}</p>
+					<p class="opinion__author-address">{{ dem.ciudad }}</p>
 				</div>
 			</li>
 		{% endfor %}

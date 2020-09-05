@@ -2,57 +2,52 @@
 
 {% block title %}Login
 {% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Catamaran:400,500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{{asset('assets/styles/styles.css') }}">
+	<script src="https://kit.fontawesome.com/d5a5c93a6c.js" crossorigin="anonymous"></script>
+{% endblock %}
+
 
 {% block body %}
-	<main>
-		<div class="jumbo">
-			<div class="wrapper">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-md-6">
+	<a href="{{ path('maleteo-home') }}">Página principal ></a>
+	<form method="post">
+		{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
 
-
-							<form method="post">
-								{% if error %}
-									<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-								{% endif %}
-
-								{% if app.user %}
-									<div class="mb-3">
-										Has ingresado como:
-										{{ app.user.username }},
-										<a href="{{ path('app_logout') }}">Logout</a>
-									</div>
-								{% endif %}
-
-								<h1 class="h3 mb-3 font-weight-normal">Por favor, ingrese con su cuenta:</h1>
-								<label for="inputUsername">Username</label>
-								<input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
-								<label for="inputPassword">Password</label>
-								<input type="password" name="password" id="inputPassword" class="form-control" required>
-
-								<input
-								type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-								{#
-								        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-								        See https://symfony.com/doc/current/security/remember_me.html
-
-								        <div class="checkbox mb-3">
-								            <label>
-								                <input type="checkbox" name="_remember_me"> Remember me
-								            </label>
-								        </div>
-								    #}
-
-								<button class="btn btn-lg btn-primary" type="submit" onclick {{ path('maleteo-home') }} ]>
-									Sign in
-								</button>
-							</form>
-						</div>
-					</div>
-				</div>
+		{% if app.user %}
+			<div class="mb-3">
+				Ha ingresado como:
+				{{ app.user.username }},
+				<a href="{{ path('app_logout') }}">Logout</a>
 			</div>
-		</div>
-	</main>
+		{% else %}
+
+			<h1 class="h3 mb-3 font-weight-normal">Por favor, ingrese con su cuenta:</h1>
+			<label for="inputUsername">Username</label>
+			<input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
+			<label for="inputPassword">Password</label>
+			<input type="password" name="password" id="inputPassword" class="form-control" required>
+
+			<input
+			type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+			{#
+																										        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+																										        See https://symfony.com/doc/current/security/remember_me.html
+																		
+																										        <div class="checkbox mb-3">
+																										            <label>
+																										                <input type="checkbox" name="_remember_me"> Remember me
+																										            </label>
+																										        </div>
+																										    #}
+
+			<button class="btn btn-lg btn-primary" type="submit" onclick {{ path('maleteo-home') }} ]>
+				Sign in
+			</button>
+		{% endif %}
+
+	</form>
 {% endblock %}
