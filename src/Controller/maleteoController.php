@@ -17,7 +17,7 @@ class maleteoController extends AbstractController {
    */
   public function home(EntityManagerInterface $doctrine) {
     $repo = $doctrine->getRepository(Opiniones::class);
-    $opiniones = $repo->findAll();
+    $opiniones = $repo->findBy(array(),array('id'=>'ASC'), 3, 0);
     return $this->render("maleteo.html.twig", ['opiniones' => $opiniones]);
   }
 
@@ -78,5 +78,4 @@ class maleteoController extends AbstractController {
   public function register() {
     return $this->render('register.html.twig');
   }
-
 }

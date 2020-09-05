@@ -1,0 +1,13 @@
+Para que al extender de la base cogiera los estilos compartidos (header y footer), tuve que hacer:
+
+composer require symfony/asset
+
+y en cada fichero twig extendido, copiar el mismo {% block stylesheet % } con la salvedad de que el link al css eran:
+
+<link rel="stylesheet" href="{{asset('assets/styles/styles.css') }}">
+
+y no:
+
+<link rel="stylesheet" href="assets/styles/styles.css">
+
+que es el que pertenece a la base del que se extiende (maleteo.html.twig)

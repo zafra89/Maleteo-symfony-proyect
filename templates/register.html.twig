@@ -1,40 +1,36 @@
 {% extends 'maleteo.html.twig' %}
 
-{% block title %}Maleteo registro
+{% block title %}Maleteo registrarse
 {% endblock %}
-{% block stylesheets %}<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Catamaran:400,500&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="{{asset('assets/styles/styles.css') }}">
-	<script src="https://kit.fontawesome.com/d5a5c93a6c.js" crossorigin="anonymous"></script>
-{% endblock %}
-{% block body %}
-	<a href="{{ path('maleteo-home') }}">Página principal ></a>
-	{% if app.user %}
-		<div class="mb-3">
-			Usted ya está registrado en Maleteo como: 
-			{{ app.user.username }}, 
-			<a href="{{ path('app_logout') }}">Logout</a>
-		</div>
-	{% else %}
-		<form
-			action="{{ path('app_register') }}" method="POST">
-			<!-- Aquí conectamos con la Demo introduciendo su path-->
-			<p class="the-form__title heading3">
-				Regístrate en Maleteo:
-			</p>
-			<div class="the-form__group">
-				<label for="username">
-					Nombre de usuario
-				</label>
-				<input type="text" id="inputUsername" class="the-form__input" name="username">
+
+	{% block body %}
+		<a href="{{ path('maleteo-home') }}">Página principal ></a>
+		{% if app.user %}
+			<div class="mb-3">
+				Usted ya está registrado en Maleteo como:
+				{{ app.user.username }},
+				<a href="{{ path('app_logout') }}">Logout</a>
 			</div>
-			<div class="the-form__group">
-				<label for="password">
-					Contraseña
-				</label>
-				<input type="passwrod" id="inputPass" class="the-form__input" placeholder="" name="password">
-			</div>
-			<input type="submit" class="the-form__btn btn btn-lg btn-primary" value="Enviar" onclick="{{ path('maleteo-home') }}">
-		</form>
-	{% endif %}
-{% endblock %}
+		{% else %}
+			<form
+				action="{{ path('app_register') }}" method="POST">
+				<!-- Aquí conectamos con la Demo introduciendo su path-->
+				<p class="the-form__title heading3">
+					Regístrate en Maleteo:
+				</p>
+				<div class="the-form__group">
+					<label for="username">
+						Nombre de usuario
+					</label>
+					<input type="text" id="inputUsername" class="the-form__input" name="username">
+				</div>
+				<div class="the-form__group">
+					<label for="password">
+						Contraseña
+					</label>
+					<input type="passwrod" id="inputPass" class="the-form__input" placeholder="" name="password">
+				</div>
+				<input type="submit" class="the-form__btn btn btn-lg btn-primary" value="Enviar" onclick="{{ path('maleteo-home') }}">
+			</form>
+		{% endif %}
+	{% endblock %}
