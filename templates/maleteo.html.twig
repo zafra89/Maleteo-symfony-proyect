@@ -11,15 +11,19 @@
 		{% block stylesheets %}<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 			<link href="https://fonts.googleapis.com/css?family=Catamaran:400,500&display=swap" rel="stylesheet">
 			<link rel="stylesheet" href="assets/styles/styles.css">
+			<script src="https://kit.fontawesome.com/d5a5c93a6c.js" crossorigin="anonymous"></script>
 		{% endblock %}
 	</head>
 	{% block header %}
 		<body>
 			<div class="wrapper">
 				<div class="container-fluid">
-					<header class="header">
-						<img src="assets/img/logo.svg" alt="Maleteo">
-						<p>User: {{ app.user.username }}</p>
+					<header class="header row">
+						<img src="assets/img/logo.svg" alt="Maleteo" class="col-md-3">
+						<p class="logged-user col-md-offset-7 col-md-2"><span class="fas fa-user"></span> {{ app.user.username | default }}
+						{% if app.user == null %}<a href="{{ path('app_login') }}"> Login</a><span> / </span><a href="{{ path('register') }}"> Regístrate</a>{% endif %}
+						{% if app.user %}<a href="{{ path('app_logout') }}">Logout</a>{% endif %}
+						</p>
 					</header>
 				</div>
 			</div>
@@ -75,7 +79,7 @@
 											</p>
 											<p class="howworks__step-txt">
 												Para obtener todas las ventajas puedes registrarte
-												<a href="#">aquí</a>.
+												<a href="{{ path('register') }}">aquí</a>.
 											</p>
 										</div>
 									</div>
@@ -129,7 +133,6 @@
 									<div class="the-form">
 										<form
 											action="{{ path('newDemo') }}" method="POST">
-											<!-- Aquí conectamos con la Demo introduciendo su path-->
 											<p class="the-form__title heading3">
 												Solicita una demo
 											</p>
@@ -212,11 +215,11 @@
 											<div class="the-form__group the-form__group_checkbox">
 												<input type="checkbox" id="privacity">
 												<label for="privacity">
-													Aceptas la
-													<a href="#">política de privacidad</a>
+													Acepto la
+													<a href="">política de privacidad</a>
 												</label>
 											</div>
-											<input type="submit" class="the-form__btn btn btn-lg btn-primary" value="Enviar" onclick="{{ path('newDemo') }}">
+											<input type="submit" class="the-form__btn btn btn-lg btn-primary" value="Enviar">
 										</form>
 									</div>
 								</div>

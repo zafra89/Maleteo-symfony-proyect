@@ -79,28 +79,4 @@ class maleteoController extends AbstractController {
     return $this->render('register.html.twig');
   }
 
-  /**
-   * @Route("/opinion", name="newOpinion");
-   */
-  public function insertOpinion(EntityManagerInterface $doctrine) {
-    $opinion1 = new Opiniones();
-    $opinion1->setComentario("Muy contento con el servicio. Repetiré.");
-    $opinion1->setAutor("Alicia");
-    $opinion1->setCiudad("Lugo");
-    $doctrine->persist($opinion1);
-
-    $opinion2 = new Opiniones();
-    $opinion2->setComentario("Deja mucho que desear la forma en la que gestionan todo.");
-    $opinion2->setAutor("Mario");
-    $opinion2->setCiudad("Valencia");
-    $doctrine->persist($opinion2);
-
-    $opinion3 = new Opiniones();
-    $opinion3->setComentario("Muy recomendable para ganar un extra.");
-    $opinion3->setAutor("Marina");
-    $opinion3->setCiudad("Huelva");
-    $doctrine->persist($opinion3);
-
-    $doctrine->flush();
-  }
 }
