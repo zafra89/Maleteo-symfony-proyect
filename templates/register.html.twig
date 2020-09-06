@@ -3,34 +3,54 @@
 {% block title %}Maleteo registrarse
 {% endblock %}
 
-	{% block body %}
-		<a href="{{ path('maleteo-home') }}">Página principal ></a>
-		{% if app.user %}
-			<div class="mb-3">
-				Usted ya está registrado en Maleteo como:
-				{{ app.user.username }},
-				<a href="{{ path('app_logout') }}">Logout</a>
+{% block body %}
+	<main>
+		<div>
+			<div class="wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-8">
+							<a href="{{ path('maleteo-home') }}">Página principal ></a>
+							{% if app.user %}
+								<div class="mb-3">
+									Usted ya está registrado en Maleteo como:
+									{{ app.user.username }},
+									<a href="{{ path('app_logout') }}">Logout</a>
+								</div>
+							{% else %}
+								<div class="row">
+									<form
+										action="{{ path('app_register') }}" method="POST" class="col-md-8">
+										<!-- Aquí conectamos con la Demo introduciendo su path-->
+										<p class="the-form__title heading3">
+											Regístrate en Maleteo:
+										</p>
+										<div class="the-form__group">
+											<label for="username">
+												Nombre de usuario
+											</label>
+											<input type="text" id="inputUsername" class="the-form__input" name="username">
+										</div>
+										<div class="the-form__group">
+											<label for="password">
+												Contraseña
+											</label>
+											<input type="password" id="inputPass" class="the-form__input" placeholder="" name="password">
+										</div>
+										<!--<div class="the-form__group">
+											<p>Elige tu rol</p>
+											<label for="inputRoleAdmin">Admin</label>
+											<input type="radio" name="roles" id="inputRoleAdmin" class="form-control" value="['ROLE_ADMIN']">
+											<label for="inputRoleUser">Usuario</label>
+											<input type="radio" name="roles" id="inputRoleUser" class="form-control" value="['ROLE_USER']" checked>
+										</div>-->
+										<input type="submit" class="the-form__btn btn btn-lg btn-primary" value="Enviar">
+									</form>
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
 			</div>
-		{% else %}
-			<form
-				action="{{ path('app_register') }}" method="POST">
-				<!-- Aquí conectamos con la Demo introduciendo su path-->
-				<p class="the-form__title heading3">
-					Regístrate en Maleteo:
-				</p>
-				<div class="the-form__group">
-					<label for="username">
-						Nombre de usuario
-					</label>
-					<input type="text" id="inputUsername" class="the-form__input" name="username">
-				</div>
-				<div class="the-form__group">
-					<label for="password">
-						Contraseña
-					</label>
-					<input type="passwrod" id="inputPass" class="the-form__input" placeholder="" name="password">
-				</div>
-				<input type="submit" class="the-form__btn btn btn-lg btn-primary" value="Enviar" onclick="{{ path('maleteo-home') }}">
-			</form>
-		{% endif %}
+		</div>
 	{% endblock %}

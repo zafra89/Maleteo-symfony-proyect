@@ -9,6 +9,7 @@ use App\Entity\Demo;
 use App\Entity\Opiniones;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 class maleteoController extends AbstractController {
 
@@ -55,6 +56,17 @@ class maleteoController extends AbstractController {
   }
 
   /**
+   * @Route("/delopiniones/{id}", name="deleteOpiniones");
+   */
+  public function deleteOpiniones(EntityManagerInterface $doctrine, Opiniones $id) {
+    $opinion = $doctrine->getRepository(Opiniones::class)->find($id);
+    $doctrine->remove($opinion);
+    $doctrine->flush();
+
+    return $this->redirectToRoute('showOpiniones');
+  }
+
+  /**
    * @Route("/demo", name="newDemo");
    */
   public function insertDemo(Request $request, EntityManagerInterface $doctrine) {
@@ -78,4 +90,5 @@ class maleteoController extends AbstractController {
   public function register() {
     return $this->render('register.html.twig');
   }
+
 }

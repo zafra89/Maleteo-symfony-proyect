@@ -32,9 +32,8 @@ class SecurityController extends AbstractController
     /**
      * @Route("/logout", name="app_logout")
      */
-    public function logout()
-    {
-        return $this->redirectToRoute('maleteo-home');;
+    public function logout() {
+        return $this->redirectToRoute('maleteo-home');
     }
 
     /**
@@ -44,10 +43,11 @@ class SecurityController extends AbstractController
         $user = new User();
         $user->setUsername($request->get("username"));
         $user->setPassword($passwordEncoder->encodePassword($user, $request->get("password")));
+        //$user->setRoles($request->get('roles'));
 
         $doctrine->persist($user);
         $doctrine->flush();
 
-        return new Response("Usuario creado correctamente.");
+        return $this->render('success-register.html.twig');
     }
 }

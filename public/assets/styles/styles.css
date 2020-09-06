@@ -949,6 +949,7 @@
 }
 
 .footer {
+  margin-top: 100px;
   padding: 2em 0;
   background: #4b4948;
   color: white;
@@ -968,6 +969,22 @@ body {
 
 a {
   color: #f09000;
+}
+
+.breadcrumb-links {
+  margin-bottom: 25px;
+}
+
+
+.user-demos {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 20px 0 40px 0;
+}
+
+.success {
+  margin: 20px 0;
+  font-size: 25px;
 }
 
 /*# sourceMappingURL=styles.css.map */

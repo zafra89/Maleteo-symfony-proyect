@@ -10,7 +10,7 @@
 		</title>
 		{% block stylesheets %}<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 			<link href="https://fonts.googleapis.com/css?family=Catamaran:400,500&display=swap" rel="stylesheet">
-			<link rel="stylesheet" href="http://localhost:8000/assets/styles/styles.css">
+			<link rel="stylesheet" href="http://localhost:8001/assets/styles/styles.css">
 			<script src="https://kit.fontawesome.com/d5a5c93a6c.js" crossorigin="anonymous"></script>
 		{% endblock %}
 	</head>
@@ -19,7 +19,7 @@
 			<div class="wrapper">
 				<div class="container-fluid">
 					<header class="header row">
-						<img src="http://localhost:8000/assets/img/logo.svg" alt="Maleteo" class="col-md-3">
+						<img src="http://localhost:8001/assets/img/logo.svg" alt="Maleteo" class="col-md-3">
 						<p class="logged-user col-md-offset-7 col-md-2">
 							<span class="fas fa-user"></span>
 							{{ app.user.username | default }}
