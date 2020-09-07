@@ -9,13 +9,13 @@
 			<div class="wrapper">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-md-8">
-							<a href="{{ path('maleteo-home') }}">Página principal ></a>
+						<a href="{{ path('maleteo-home') }}">Página principal ></a>
+						<div class="jumbo col-md-12"></div>
+						<div class="col-md-12">
 							<form method="post">
 								{% if error %}
 									<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 								{% endif %}
-
 								{% if app.user %}
 									<div class="mb-3">
 										Ha ingresado como:
@@ -24,14 +24,16 @@
 									</div>
 								{% else %}
 									<div class="row">
-										<div class="col-md-12">
-											<h1 class="h3 mb-3 font-weight-normal">Por favor, ingrese con su cuenta o
+										<div class="col-md-6">
+											<h1 class="the-form__title heading3">Ingrese con su cuenta o
 												<a href="{{ path('register') }}">regístrese</a>:</h1>
-											<label for="inputUsername">Username</label>
-											<input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
-											<label for="inputPassword">Password</label>
-											<input type="password" name="password" id="inputPassword" class="form-control" required>
-
+											<div class="the-form__group">
+												<label for="inputUsername">Nombre de usuario</label>
+												<input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="the-form__input" required autofocus></div>
+											<div class="the-form__group">
+												<label for="inputPassword">Contraseña</label>
+												<input type="password" name="password" id="inputPassword" class="the-form__input" required>
+											</div>
 											<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 											<button class="btn btn-lg btn-primary" type="submit">
 												Sign in

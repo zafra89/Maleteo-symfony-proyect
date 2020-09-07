@@ -9,8 +9,9 @@
 			<div class="wrapper">
 				<div class="container-fluid">
 					<div class="row">
+						<a href="{{ path('maleteo-home') }}">Página principal ></a>
+						<div class="jumbo col-md-12"></div>
 						<div class="col-md-8">
-							<a href="{{ path('maleteo-home') }}">Página principal ></a>
 							{% if app.user %}
 								<div class="mb-3">
 									Usted ya está registrado en Maleteo como:
@@ -23,7 +24,7 @@
 										action="{{ path('app_register') }}" method="POST" class="col-md-8">
 										<!-- Aquí conectamos con la Demo introduciendo su path-->
 										<p class="the-form__title heading3">
-											Regístrate en Maleteo:
+											Regístrese en Maleteo:
 										</p>
 										<div class="the-form__group">
 											<label for="username">
@@ -38,12 +39,12 @@
 											<input type="password" id="inputPass" class="the-form__input" placeholder="" name="password">
 										</div>
 										<!--<div class="the-form__group">
-											<p>Elige tu rol</p>
-											<label for="inputRoleAdmin">Admin</label>
-											<input type="radio" name="roles" id="inputRoleAdmin" class="form-control" value="['ROLE_ADMIN']">
-											<label for="inputRoleUser">Usuario</label>
-											<input type="radio" name="roles" id="inputRoleUser" class="form-control" value="['ROLE_USER']" checked>
-										</div>-->
+																															<p>Elige tu rol</p>
+																															<label for="inputRoleAdmin">Admin</label>
+																															<input type="radio" name="roles" id="inputRoleAdmin" class="form-control" value="['ROLE_ADMIN']">
+																															<label for="inputRoleUser">Usuario</label>
+																															<input type="radio" name="roles" id="inputRoleUser" class="form-control" value="['ROLE_USER']" checked>
+																														</div>-->
 										<input type="submit" class="the-form__btn btn btn-lg btn-primary" value="Enviar">
 									</form>
 								</div>

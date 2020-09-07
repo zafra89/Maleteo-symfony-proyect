@@ -18,7 +18,7 @@ class maleteoController extends AbstractController {
    */
   public function home(EntityManagerInterface $doctrine) {
     $repo = $doctrine->getRepository(Opiniones::class);
-    $opiniones = $repo->findBy(array(),array('id'=>'ASC'), 3, 0);
+    $opiniones = $repo->findBy([], ['id'=>'DESC'], 3);
     return $this->render("maleteo.html.twig", ['opiniones' => $opiniones]);
   }
 
@@ -82,7 +82,6 @@ class maleteoController extends AbstractController {
     $opiniones = $repo->findAll();
     return $this->render("maleteo.html.twig", ['opiniones' => $opiniones]);
   }
-
 
   /**
    * @Route("/maleteo/register", name="register");

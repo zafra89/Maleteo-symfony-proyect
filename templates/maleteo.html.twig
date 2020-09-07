@@ -236,25 +236,22 @@
 								</div>
 							</div>
 						</section>
-
 						<section class="opinions">
 							<h2 class="opinions__title heading2">
 								Opiniones de otros guardianes
 							</h2>
-							<p>Escriba su opinión
+							<p class="opinions__title write-opi">Escriba la suya
 								<a href="{{ path('showOpiniones') }}">aquí</a>
 							</p>
 							<ul class="row">
 								{% for opin in opiniones %}
-									{% if opin.id < 4 %}
-										<li class="col-md-4">
-											<div class="opinion">
-												<blockquote class="opinion__blq simple-bubble text-large">{{ opin.comentario }}</blockquote>
-												<p class="opinion__author text-large">{{ opin.autor }}</p>
-												<p class="opinion__author-address">{{ opin.ciudad }}</p>
-											</div>
-										</li>
-									{% endif %}
+									<li class="col-md-4">
+										<div class="opinion">
+											<blockquote class="opinion__blq simple-bubble text-large">{{ opin.comentario }}</blockquote>
+											<p class="opinion__author text-large">{{ opin.autor }}</p>
+											<p class="opinion__author-address">{{ opin.ciudad }}</p>
+										</div>
+									</li>
 								{% endfor %}
 							</ul>
 						</section>
